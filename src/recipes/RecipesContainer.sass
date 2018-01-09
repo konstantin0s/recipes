@@ -1,0 +1,29 @@
+@import "../styles/breakpoints.sass"
+
+.recipes.wrapper
+  margin: 0 auto
+  width: 100%
+
+  main
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+
+    @include breakpoint($breakpoint-large)
+      max-width: 1260px
+      flex-flow: row wrap
+
+    @include breakpoint($breakpoint-medium)
+      flex-flow: row wrap
+
+  &> header
+    display: flex
+    flex-direction: column
+    margin: 0 auto
+    flex: 2 100%
+
+    @include breakpoint($breakpoint-large)
+      max-width: 1260px
+
+      h1
+        padding: 0 30px

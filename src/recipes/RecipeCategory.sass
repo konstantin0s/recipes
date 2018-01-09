@@ -1,0 +1,46 @@
+@import "../styles/colors.sass"
+
+li.RecipeCategory
+  list-style: none
+  display: inline-block
+  border: 1px solid #cec
+  height: 1.8em
+  text-align: center
+  border-radius: 1.8em
+  padding: 5px
+  line-height: 1.5em
+  min-width: 1.8em
+
+  span
+    display: inline-block
+    font-size: 0.8em
+    padding: 0
+    width: 0
+    overflow: hidden
+    text-indent: 30em
+    transition: text-indent 0.8s ease-out
+
+  img
+    margin: 5px 0
+    height: 1em
+
+  &:hover
+    span
+      text-indent: 0
+      width: 6em
+
+    img
+      margin: 5px 0 5px 10px
+
+  &.vegan
+    border-color: $green
+    color: $green
+
+
+  &.vegetarian
+    border-color: $orange
+    color: $orange
+
+  &.pescatarian
+    border-color: $blue
+    color: $blue
