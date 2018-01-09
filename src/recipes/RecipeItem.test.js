@@ -17,43 +17,12 @@ const recipe = {
 describe('<RecipeItem />', () => {
   const container = shallow(<RecipeItem { ...recipe } />)
 
-  it('is wrapped in a article tag with class name "recipe"', () => {
+  it('is wrapped in a article tag with class name "RecipeItem"', () => {
     expect(container).toHaveTagName('article')
-    expect(container).toHaveClassName('recipe')
+    expect(container).toHaveClassName('RecipeItem')
   })
 
   it('contains a the title', () => {
     expect(container.find('h1')).toHaveText(recipe.title)
-  })
-
-  it('shows a 🥕  when it is vegetarian', () => {
-    expect(container.find('ul > li > img')).toHaveProp('src', Vegetarian)
-  })
-
-  describe('a pescatarian recipe', () => {
-    const container = shallow(
-      <RecipeItem
-        { ...recipe }
-        vegetarian={false}
-        pescatarian={true}
-      />
-    )
-
-    it('shows a 🐟', () => {
-      expect(container.find('ul > li > img')).toHaveProp('src', Pescatarian)
-    })
-  })
-
-  describe('a vegan recipe', () => {
-    const container = shallow(
-      <RecipeItem
-        { ...recipe }
-        vegan={true}
-      />
-    )
-
-    it('shows a 🌾', () => {
-      expect(container.find('ul > li > img')).toHaveProp('src', Vegan)
-    })
   })
 })

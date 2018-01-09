@@ -7,11 +7,16 @@ import './RecipesContainer.css'
 
 class RecipesContainer extends PureComponent {
   static propTypes = {
-    recipes: PropTypes.arrayOf(recipeShape).isRequired
+    recipes: PropTypes.arrayOf(recipeShape).isRequired,
+    updateRecipe: PropTypes.func.isRequired
   }
 
-  renderRecipe(recipe, index) {
-    return <RecipeItem key={index} { ...recipe } />
+  renderRecipe = (recipe, index) => {
+    return <RecipeItem
+      key={index}
+      onChange={this.props.updateRecipe}
+      { ...recipe }
+    />
   }
 
   render() {

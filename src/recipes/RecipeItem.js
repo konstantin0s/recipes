@@ -2,6 +2,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import RecipeCategory from './RecipeCategory'
+import LikeButton from '../components/LikeButton'
 import './RecipeItem.css'
 
 const PLACEHOLDER = 'http://via.placeholder.com/500x180?text=No%20Image'
@@ -18,10 +19,19 @@ export const recipeShape = PropTypes.shape({
 })
 
 class RecipeItem extends PureComponent {
-  static propTypes = recipeShape.isRequired
+  static propTypes = {
+    ...recipeShape.isRequired,
+    onChange: PropTypes.func.isRequired
+  }
+
+  toggleLike = () => {
+    console.log('[RecipeItem]: toggleLike called!')
+    const { onChange, _id, liked } = this.props
+    onChange(_id, { liked: !liked })
+  }
 
   render() {
-    const { title, summary, vegan, vegetarian, pescatarian, photo } = this.props
+    const { title, summary, vegan, vegetarian, pescatarian, photo, liked } = this.props
     const categories = { vegan, vegetarian, pescatarian }
 
     return(
@@ -40,6 +50,12 @@ class RecipeItem extends PureComponent {
         <div>
           <p>{ summary }</p>
         </div>
+        <footer>
+          <LikeButton
+            onChange={this.toggleLike}
+            liked={liked}
+          />
+        </footer>
       </article>
     )
   }
