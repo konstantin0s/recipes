@@ -1,8 +1,10 @@
 // src/recipes/RecipeItem.js
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import RecipeCategory from './RecipeCategory'
 import LikeButton from '../components/LikeButton'
+import { toggleLikeRecipe } from '../actions/recipes'
 import './RecipeItem.css'
 
 const PLACEHOLDER = 'http://via.placeholder.com/500x180?text=No%20Image'
@@ -21,13 +23,12 @@ export const recipeShape = PropTypes.shape({
 class RecipeItem extends PureComponent {
   static propTypes = {
     ...recipeShape.isRequired,
-    onChange: PropTypes.func.isRequired
+    toggleLikeRecipe: PropTypes.func.isRequired
   }
 
   toggleLike = () => {
-    console.log('[RecipeItem]: toggleLike called!')
-    const { onChange, _id, liked } = this.props
-    onChange(_id, { liked: !liked })
+    const { _id } = this.props
+    this.props.toggleLikeRecipe(_id)
   }
 
   render() {
@@ -61,4 +62,8 @@ class RecipeItem extends PureComponent {
   }
 }
 
-export default RecipeItem
+const mapDispatchToProps = {
+  toggleLikeRecipe
+}
+
+export default connect(null, mapDispatchToProps)(RecipeItem)
