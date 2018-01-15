@@ -3,7 +3,7 @@ import loading from '../loading'
 import loadError from '../load/load-error'
 import loadSuccess from '../load/load-success'
 import { history } from '../../store'
-import { push } from 'react-router-redux'
+  import  {push}  from 'react-router-redux'
 
 
 export const USER_SIGNED_IN = 'USER_SIGNED_IN'
