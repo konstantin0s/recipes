@@ -5,10 +5,17 @@ import { connect } from 'react-redux'
 import Title from '../components/Title'
 import RecipeItem, { recipeShape } from './RecipeItem'
 import './RecipesContainer.css'
+import RecipeEditor from './RecipeEditor'
+import  fetch  from '../actions/recipes/fetch'
+
 
 class RecipesContainer extends PureComponent {
   static propTypes = {
     recipes: PropTypes.arrayOf(recipeShape).isRequired,
+  }
+
+  componentWillMount() {
+    this.props.fetch()
   }
 
   renderRecipe = (recipe, index) => {
@@ -20,6 +27,8 @@ class RecipesContainer extends PureComponent {
       <div className="recipes wrapper">
         <header>
           <Title content="Recipes" />
+          <RecipeEditor />
+
         </header>
 
         <main>
@@ -37,4 +46,4 @@ const mapStateToProps = ({ recipes }) => ({ recipes })
 //   return { recipes: store.recipes }
 // }
 
-export default connect(mapStateToProps)(RecipesContainer)
+export default connect(mapStateToProps, {fetch})(RecipesContainer)

@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import RecipesContainer from './recipes/RecipesContainer'
-import './App.css'
+// src/App.js
+import React from 'react'
+import Routes from './routes'
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <RecipesContainer />
+      <div>
+        <Routes />
       </div>
     )
   }
